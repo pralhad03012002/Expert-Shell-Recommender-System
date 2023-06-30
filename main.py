@@ -39,7 +39,7 @@ class RecommenderSystem(KnowledgeEngine):
             "meal": 600,
             "location":200,
             "cuisine": 100,
-            "budget": 75,
+            "budget": 50,
             "service": 25
         }
 
