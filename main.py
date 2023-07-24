@@ -30,7 +30,7 @@ class RecommenderSystem(KnowledgeEngine):
             Restaurant("Fruitful!", ["Dinner"], "CP", ["Desert", "Burger", "Fries"], "seating available", "Expensive"),
             Restaurant("Agra Chaat",["Lunch", "Dinner"],"CP", ["North Indian"], "seating available", "Budget Friendly"),
             Restaurant("Vijay Vahini Foods",["Lunch", "Dinner"],"CP", ["North Indian", "Biryani", "Chinese"], "seating available", "Moderate"),
-            Restaurant("Cafetaria", ["Breakfast", "Lunch", "Dinner"],"Academic Block", ["North Indian", "South Indian", "Desert", "Chinese"], "seating available", "Moderate"),
+            Restaurant("Cafetaria", ["Breakfast", "Lunch", "Dinner"],"Academic Block", ["North Indian", "South Indian", "Desert", "Chinese","Biryani"], "seating available", "Moderate"),
             Restaurant("Cafe Coffee Day",["Breakfast", "Lunch"], "Academic Block", ["Sandwich"], "takeaway only", "Expensive")
         ]
 
@@ -59,19 +59,18 @@ class RecommenderSystem(KnowledgeEngine):
         # Find the indices of the restaurants with the highest scores
         max_scores = max(scores)
         # Find the indices of the restaurants with the highest scores
-        best_restaurant_indices = [i for i, score in sorted(enumerate(scores), key=lambda x: x[1], reverse=True) if score >= 900]
+        best_restaurant_indices = [i for i, score in sorted(enumerate(scores), key=lambda x: x[1], reverse=True)]
 
         if best_restaurant_indices:
-            print("Recommended restaurants:")
-            for index in best_restaurant_indices:
-                best_restaurant = restaurants[index]
-                print("Restaurant:", best_restaurant.name)
-                print("meal:", ', '.join(best_restaurant.meal))
-                print("location:", best_restaurant.location)
-                print("Cuisines:", ', '.join(best_restaurant.cuisines))
-                print("Service:", best_restaurant.service)
-                print("Price:", best_restaurant.price)
-                print()
+            print("Recommended restaurant:")
+            best_restaurant = restaurants[0]
+            print("Restaurant:", best_restaurant.name)
+            print("meal:", ', '.join(best_restaurant.meal))
+            print("location:", best_restaurant.location)
+            print("Cuisines:", ', '.join(best_restaurant.cuisines))
+            print("Service:", best_restaurant.service)
+            print("Price:", best_restaurant.price)
+            print()
         else:
             print("No restaurants found matching the criteria.")
 
@@ -83,8 +82,8 @@ engine = RecommenderSystem()
 engine.reset()
 
 meal1 = input("Enter your preferred meal time (e.g., Breakfast,Lunch, Dinner): ")
-location1 = input("Enter your preferred location: ")
-cuisine1 = input("Enter your preferred cuisine: ")
+location1 = input("Enter your preferred location:(e.g., CP, Mess 1, Mess 2, Academic Block) ")
+cuisine1 = input("Enter your preferred cuisine: (e.g. North Indian, South Indian, Desert, Chinese, Maggi, Sandwich, Biryani, Burger, Fries ) ")
 service1 = input("Enter your preferred service type (e.g., seating available, takeaway only): ")
 price1 = input("Enter your preferred price range (e.g., Budget Friendly, Moderate, Expensive): ")
 
